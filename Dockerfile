@@ -1,15 +1,15 @@
 FROM alpine
-MAINTAINER Andre Almar <andre@y7mail.com>
+MAINTAINER Christian Gatzlaff <cgatzlaff@gmail.com>
 
-#flask environment
+# basic flask environment
 RUN apk add --no-cache bash git nginx uwsgi uwsgi-python py-pip \
 	&& pip install --upgrade pip \
 	&& pip install flask
 
-#app folder
+# application folder
 ENV APP_DIR /app
 
-#app dir
+# app dir
 RUN mkdir ${APP_DIR} \
 	&& chown -R nginx:nginx ${APP_DIR} \
 	&& chmod 777 /run/ -R \
@@ -17,14 +17,14 @@ RUN mkdir ${APP_DIR} \
 VOLUME [${APP_DIR}]
 WORKDIR ${APP_DIR}
 
-#expose web server port
-EXPOSE 5000
+# expose web server port
+# only http, for ssl use reverse proxy
+EXPOSE 80
 
-#copy the config files into the system
+# copy config files into filesystem
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY app.ini /app.ini
 COPY entrypoint.sh /entrypoint.sh
 
-#execute start up script
-ENTRYPOINT ["/entrypoint.sh"] 
-
+# exectute start up script
+ENTRYPOINT ["/entrypoint.sh"]
