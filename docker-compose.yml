@@ -8,6 +8,6 @@ services:
     user: nobody
     environment:
       DEBUG: 1
-    command: python start.py
+    command: python app.py
     volumes:
       - ./www:/src
