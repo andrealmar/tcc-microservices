@@ -8,7 +8,7 @@ app = Flask(__name__)
 def hello():
     return "it's working..."
 
-@app.route("/add") # exemplo de chamada URL: http://127.0.0.1:5000/add?a=1&b=5
+@app.route("/add") # exemplo de chamada URL: http://localhost:5000/add?a=1&b=5
 def add():
     try:
         num1 = int(request.args.get('a'))
@@ -17,7 +17,7 @@ def add():
     except Exception as e:
         return jsonify({'resultado': "OCORREU O SEGUINTE ERRO: " + str(e)})
 
-@app.route("/subtract") # exemplo de chamada URL: http://127.0.0.1:5000/subtract?a=1&b=5
+@app.route("/subtract") # exemplo de chamada URL: http://localhost:5000/subtract?a=1&b=5
 def subtract():
     try:
         num1 = int(request.args.get('a'))
@@ -26,7 +26,7 @@ def subtract():
     except Exception as e:
         return jsonify({'resultado': "OCORREU O SEGUINTE ERRO: " + str(e)})
 
-@app.route("/multiply") # exemplo de chamada URL: http://127.0.0.1:5000/multiply?a=2&b=5
+@app.route("/multiply") # exemplo de chamada URL: http://localhost:5000/multiply?a=2&b=5
 def multiply():
     try:
         num1 = int(request.args.get('a'))
@@ -35,7 +35,7 @@ def multiply():
     except Exception as e:
         return jsonify({'resultado': "OCORREU O SEGUINTE ERRO: " + str(e)})
 
-@app.route("/divide") # exemplo de chamada URL: http://127.0.0.1:5000/divide?a=10&b=2
+@app.route("/divide") # exemplo de chamada URL: http://localhost:5000/divide?a=10&b=2
 def divide():
     try:
         num1 = int(request.args.get('a'))
